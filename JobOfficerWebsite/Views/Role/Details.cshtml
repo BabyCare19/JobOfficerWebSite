@@ -1,0 +1,27 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "تفاصيل دور المسؤؤل";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>تفاصيل دور المسؤؤل</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+             @Html.Label("اسم المسؤؤل") 
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("العودة الي  الوراء", "Index")
+</p>

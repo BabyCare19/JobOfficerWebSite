@@ -1,0 +1,38 @@
+﻿@model IEnumerable<JobOfficerWebsite.Models.Category>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron alert alert-info">
+    <h3>مرحبا بك عزيزي الزائر </h3>
+    <p>
+        وجودكم هنا يعني أنكم من المميزين الذين يستثمرن في عقولهم على الصعيد الشخصي والمؤسسي. تجدون في الأكاديمية باقة من الدورات والاختبارات والمقاييس الإلكترونية الموثقة علميا يقدمها لكم ثلة من خبراء التربية والإدارة. وبقدر سعادتنا بوجودكم معنا في الأكاديمية فإننا نأمل أن تحققوا أقصى استفادة علمية ومهاراتية منها...تصفحوا الأكاديمية رويداً.. ولا تنسوا 
+    </p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg"> المزيد من التفاصيل &raquo;</a></p>
+</div>
+@foreach (var item in Model)
+{
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h1>@Html.DisplayFor(modelitem => item.CategoryName)</h1>
+    </div>
+
+    <div class="row panel-body">
+        <h5>@Html.DisplayFor(modelitem => item.CategoryDescription)</h5>
+
+        @foreach (var subitem in item.jobs)
+        {
+           <div class="col-md-3 thumbnail" style="margin-left:20px;
+                    margin-bottom:30px;min-height:380px;width:244px">
+            <img src="~/Uploads/@subitem.JobImage" height="170"  width="240"/>
+            <h2>@Html.DisplayFor(m => subitem.JobTitle)</h2>
+
+            <h5>@Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(m => subitem.JobContent).ToString()))</h5>
+            @*<button class="btn btn-primary">التفاصيل</button>*@
+            @Html.ActionLink("التفاصيل", "Details", new { JobId = subitem.Id },new { @class = "btn btn-primary" })
+        </div>
+        }
+    </div>
+        </div>
+}

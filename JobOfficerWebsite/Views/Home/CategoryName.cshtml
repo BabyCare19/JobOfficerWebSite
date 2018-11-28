@@ -1,0 +1,54 @@
+﻿@model IEnumerable<JobOfficerWebsite.Models.Job>
+
+@{
+    ViewBag.Title = "CategoryName";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>CategoryName</h2>
+
+<p>
+    @Html.ActionLink("Create New", "../Categories/Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.catId)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.catId)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "../Home/Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "../Home/Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "../Home/Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

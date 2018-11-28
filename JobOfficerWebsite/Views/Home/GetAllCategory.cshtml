@@ -1,0 +1,35 @@
+﻿@model IEnumerable<JobOfficerWebsite.Models.Category>
+
+@{
+    ViewBag.Title = "GetAllCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>GetAllCategory</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.CategoryName ,"CategoryName",new { id =item.Id})
+
+            @*@Html.DisplayFor(modelItem => item.CategoryName)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDescription)
+        </td>
+        
+    </tr>
+}
+
+</table>
